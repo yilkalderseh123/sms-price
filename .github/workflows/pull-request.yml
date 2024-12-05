@@ -24,8 +24,6 @@ jobs:
           rm -f token.txt
 
       - name: Create Pull Request
-        env:
-          GH_TOKEN: ${{ secrets.GH_TOKEN }}
         run: |
           gh pr create --base main --head main --repo yilkalderseh123/sms-price \
             --title "Automated Pull Request from GitHub Actions" \
