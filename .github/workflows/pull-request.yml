@@ -18,10 +18,10 @@ jobs:
           sudo apt-get install -y gh
 
       - name: Authenticate GitHub CLI
-        env:
-          GH_TOKEN: ${{ secrets.GH_TOKEN }}
         run: |
-          echo "${{ secrets.GH_TOKEN }}" | gh auth login --with-token
+          echo "${{ secrets.GH_TOKEN }}" > token.txt
+          gh auth login --with-token < token.txt
+          rm -f token.txt
 
       - name: Create Pull Request
         env:
