@@ -11,8 +11,14 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
+      
+      - name: Set up GitHub CLI
+        uses: actions/setup-gh-cli@v2
+
       - name: Create Pull Request
         env:
           GH_TOKEN: ${{ secrets.GH_TOKEN }}
         run: |
-          gh pr create --base main --head main --repo yilkalderseh123/sms-price
+          gh pr create --base main --head main --repo yilkalderseh123/sms-price \
+            --title "Automated Pull Request from GitHub Actions" \
+            --body "This pull request was created automatically using a GitHub Actions workflow."
